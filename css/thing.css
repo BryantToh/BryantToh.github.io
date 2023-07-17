@@ -1,0 +1,123 @@
+body {
+  background: violet;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.page {
+  width: 80vw;
+  height: 80vh;
+  border: 5px solid yellow
+}
+
+#menuList{
+  justify-content: start;
+}
+
+#menuList nav ul li {
+  display: inline;
+  padding: 0;
+  margin: 15px;
+}
+
+nav ul {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+}
+
+#page1 {
+  background: red
+}
+
+#page2 {
+  background: green
+}
+
+#page3 {
+  background: blue
+}
+
+#page4 {
+  background: burlywood
+}
+
+#headerstuff {
+  display: grid;
+  grid-template-columns: 4% 11% 0 0;
+  padding: 15px;  
+  color: lightblue;
+  align-items: center;
+}
+
+#logo {
+  max-width: 39px;
+  min-width: 30px;
+}
+
+.buttondesign {
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 100px;
+  height: 30px;
+  display: block;
+  padding: 4% 15%;
+  background: linear-gradient(to right, black 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
+}
+
+.buttondesign:hover {
+  background-position: left bottom;
+}
+
+.text {
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 30px;
+  color: black;
+  transition: all .6s ease-out;
+  display: block;
+}
+
+.text:hover {
+  color: lightblue;
+}
+
+/*for responsive menu*/
+#hamIcon {
+  display: none;
+}
+
+@media screen and (max-width:800px) {
+  nav ul li {
+    display: block;
+  }
+
+  /*make a menu items vertical*/
+  #hamIcon {
+    display: block;
+  }
+
+  /* unhide menu icon */
+  nav ul {
+    display: none;
+  }
+
+  /*hide the menu item list*/
+}
+
+.menuShow {
+  display: block;
+}
