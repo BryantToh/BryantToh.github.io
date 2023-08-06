@@ -1,11 +1,20 @@
-//target all elements to save to constants
-const page1btn = document.querySelector("#page1btn");
-const page2btn = document.querySelector("#page2btn");
-const page3btn = document.querySelector("#page3btn");
-const page4btn = document.querySelector("#page4btn");
+var hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-link").forEach(n => n.
+    addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }));
+
+
 var allpages = document.querySelectorAll(".page");
-//select all subtopic pages
-console.log(allpages)
+console.log(allpages);
 hideall();
 function hideall() {
     for (let onepage of allpages) {
@@ -20,12 +29,14 @@ function show(pgno) { //function to show selected page no
     //show the page
     onepage.style.display = "block";
 }
-document.addEventListener("DOMContentLoaded", function()
-{
-    show (1);
+document.addEventListener("DOMContentLoaded", function () {
+    show(1);
 });
 /*Listen for clicks on the buttons, assign anonymous
 eventhandler functions to call show function*/
+const page1btn = document.querySelector("#page1btn");
+const page2btn = document.querySelector("#page2btn");
+const page3btn = document.querySelector("#page3btn");
 page1btn.addEventListener("click", function () {
     show(1);
 });
@@ -35,39 +46,48 @@ page2btn.addEventListener("click", function () {
 page3btn.addEventListener("click", function () {
     show(3);
 });
-page4btn.addEventListener("click", function () {
-    show(4);
+
+
+function myFunction() {
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myBtn");
+
+    if (moreText.style.display === "none") {
+        btnText.innerHTML = "Read More...";
+    }
+    else {
+        btnText.style.display = "none";
+        moreText.style.display = "inline";
+    }
+}
+
+const observer = new IntersectionObserver((entries) =>{
+    entries.forEach((entry) => {
+        console.log(entry);
+        if (entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+        else{
+            entry.target.classList.remove("show");
+        }
+    });
 });
 
-/*for hamMenu */
-const hamBtn = document.querySelector("#hamIcon");
-hamBtn.addEventListener("click", toggleMenus);
-const menuItemsList = document.querySelector("nav ul");
-function toggleMenus() { /*open and close menu*/
-    menuItemsList.classList.toggle("menuShow");
-    /*if(menuItemsList.style.display=="block")
-    menuItemsList.style.display="none";
-    else menuItemsList.style.display="block";*/
-}
-//can optimize using toggle class with css transitions
-/*page1btn.addEventListener("click", ShowPage1);
+const hiddenelements = document.querySelectorAll(".hidden");
+hiddenelements.forEach((el) => observer.observe(el));
 
-function ShowPage1(){
-    let thispage=document.querySelector("#page1");
-    thispage.style.display="block";
+function showText(txtno){
+    var textDiv = document.getElementById("fade"+txtno);
+    if (textDiv.style.display == "none"){
+        textDiv.style.display = "block";
+    }
+    else{
+         textDiv.style.display = "none";
+    }
 }
 
-function show(pgno){
-    hideall();
-    let onepage = document.querySelector("#page" + pgno);
-    onepage.stye.display = "block";
+function ScrollToTop(){
+    window.scrollTo(0, 0);
 }
 
-page3btn.addEventListener("click", showpg3);
-page3btn.addEventListener("click", function(){
-    show(3);
-});
 
-function showpg3(){
-    show(3);
-}*/
